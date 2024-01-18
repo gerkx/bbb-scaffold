@@ -1,3 +1,3 @@
-# create-svelte
+# project scaffold
 
 BBB Project Scaffold

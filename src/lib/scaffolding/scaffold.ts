@@ -1,0 +1,1 @@
+export const PROJECT_TYPES = ["Script", "Story"] as const

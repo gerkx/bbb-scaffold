@@ -4,14 +4,43 @@ import { onMount } from "svelte";
 import { init, app, filesystem, extensions, events, window  } from "@neutralinojs/lib";
 import { AppBar, AppShell, Modal, Toast, initializeStores, } from '@skeletonlabs/skeleton'
 import "@neutralinojs/lib/dist/neutralino.d.ts"
+    import TitleBar from "$lib/components/TitleBar.svelte";
+
+initializeStores();
+
+const makeResizable = async () => {
+    const { width, height} = await window.getSize()
+    if (width && height) {
+
+        await window.setSize({ width: width + 8, height})
+    }
+}
+
+onMount(() => {
+    init()
+    makeResizable()
+    
+})
 </script>
 
 
-<!-- <Toast /> -->
-<AppShell>
-    <div class="flex flex-col justify-center items center">
-        <h2 class="h2">Scaffold</h2>
+<Toast />
+<div class="flex flex-col h-full">
+    <TitleBar></TitleBar>
+    <AppShell class="h-full">
+        <div class="flex justify-center pt-4 h-full overflow-hidden">
+            <slot></slot>
+        </div>
+    </AppShell>
+</div>
 
-        <slot></slot>
-    </div>
-</AppShell>
+<style>
+    :global(html) {
+        height: 100%;
+        overflow-y:  hidden;
+    }
+    :global(body) {
+        overflow-y:  hidden;
+        height: 100%;
+    }
+</style>

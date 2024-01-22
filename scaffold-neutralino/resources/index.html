@@ -1,27 +1,36 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>NeutralinoJs sample app</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div id="neutralinoapp">
-      <h1>NeutralinoJs</h1>
-      <div id="info"></div>
-      <br/>
-      <img src="./icons/logo.gif" alt="Neutralinojs" />
-      <div>
-        <a href="#" onclick="openDocs();">Docs</a> &middot;  
-        <a href="#" onclick="openTutorial();">Tutorial</a>
-      </div>
-    </div>
-    <!-- Neutralino.js client. This file is gitignored, 
-        because `neu update` typically downloads it.
-        Avoid copy-pasting it. 
-        -->
-    <script src="js/neutralino.js"></script>
-    <!-- Your app's source files -->
-    <script src="js/main.js"></script>
-  </body>
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<script src="/neutralino.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="modulepreload" href="/_app/immutable/entry/start.aMrCtkFZ.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/entry.N_Th4cw6.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/scheduler._iQzioK7.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/index.ULDeJKQe.js">
+		<link rel="modulepreload" href="/_app/immutable/entry/app.LI5VJmJx.js">
+		<link rel="modulepreload" href="/_app/immutable/chunks/index.Ll155AD0.js">
+	</head>
+	<body data-sveltekit-preload-data="hover" data-theme="initial-theme" >
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_17if6gs = {
+						base: ""
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("/_app/immutable/entry/start.aMrCtkFZ.js"),
+						import("/_app/immutable/entry/app.LI5VJmJx.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
 </html>

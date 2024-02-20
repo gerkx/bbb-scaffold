@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import { z } from "zod";
     import TextInput from "./TextInput.svelte";
     import { os } from "@neutralinojs/lib";
@@ -8,73 +8,7 @@
     import { createScriptDirs } from "$lib/scaffolding/scaffold";
     import { getToastStore } from "@skeletonlabs/skeleton";
     
-    const toastStore = getToastStore()
-
-    const nameValidator = z.string().min(1);
-
-    const prevSeason = localStorage.getItem('prevSeason')
-
-    export let season = prevSeason ? prevSeason : ""
-    let seasonValid = true;
     
-    
-    export let episode = ''
-    let episodeValid = true;
-    
-
-    export let title = ''
-    let titleValid = true;
-    
-    const prevPath = localStorage.getItem('prevPath')
-
-    let path: string = prevPath ? prevPath : ''
-    let displayPath = '';
-    let displayPathClass = ''
-
-    $: { path,
-        displayPath = path.length ? path : 'Dropbox/.../PRODUCCION/Script/SEASON_03'
-        displayPathClass = path.length ? '' : 'font-extralight opacity-50'
-    }
-
-    const handleChooseDir = async () => {
-        try {
-            path = await os.showFolderDialog('Elegir la carpeta de base')
-            if (path) {
-                localStorage.setItem('prevPath', path)
-            }
-        }
-        catch (err) {
-            console.error(err)
-        }
-    }
-
-    let formIsValid = true;
-    $: formIsValid = !!(seasonValid && episodeValid && titleValid && path.length)
-
-    $: { season,
-        console.log(season)
-        if (season) {
-            localStorage.setItem('prevSeason', season)
-        }
-    }
-
-    const handleScriptScaffoldAttempt = async () => {
-        const success = await createScriptDirs(path, season, episode, title);
-        if (success) {
-            toastStore.trigger({ 
-                message: `Carpetas de Script para S${season.padStart(2, '0')}E${episode.padStart(2, '0')} fue creadon con éxito!`,
-                autohide: true,
-                timeout: 4000
-            })
-            return
-        }
-        toastStore.trigger({ 
-            message: `Había un error creando las carpetas de Script para S${season.padStart(2, '0')}E${episode.padStart(2, '0')}!`,
-            background: 'variant-filled-error',
-            autohide: false,
-        })
-        
-    }
 
 </script>
 
@@ -123,4 +57,4 @@
     .hover:hover {
         cursor: pointer;
     }
-</style>
+</style> -->

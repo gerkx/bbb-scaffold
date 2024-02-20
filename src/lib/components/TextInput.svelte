@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { createEventDispatcher } from "svelte";
     import type { HTMLInputTypeAttribute } from "svelte/elements";
     import type { ZodNumber, ZodString } from "zod";
 
@@ -13,10 +14,17 @@
     export let valid = true;
     export let value = '';
     export let placeholder: string | undefined = undefined
+    export let disabled = false
+    
+
+    interface ComponentEvent {
+        input: string
+    }
+
+    const dispatch = createEventDispatcher<ComponentEvent>();
 
     let _class = '';
     export { _class as class }
-
 
     let error: string | undefined
     let showPassword = false;
@@ -37,6 +45,7 @@
         if (value.length && !inputIsDirty) {
             inputIsDirty = true;
         }
+        dispatch("input", value)
     }
 
     const handleValidation = () => {
@@ -66,6 +75,7 @@
                     title={ label }
                     { placeholder } 
                     class={`${!valid ? 'input-error': ''}`}
+                    { disabled }
                     bind:value={ value }
                     on:blur={ handleValidation }
                     use:focusInit
@@ -78,6 +88,7 @@
                         type='password'
                         title={ label }
                         { placeholder } 
+                        { disabled }
                         class={`${!valid ? 'input-error': ''}`}
                         bind:value={ value }
                         on:blur={ handleValidation }
@@ -93,6 +104,7 @@
                 { type }
                 title={ label }
                 { required }
+                { disabled }
                 class={`input ${!valid ? 'input-error': ''}`}
                 autocomplete="off"
                 { placeholder } 

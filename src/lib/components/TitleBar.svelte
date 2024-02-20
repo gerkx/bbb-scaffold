@@ -2,6 +2,7 @@
     import IconWindowMinimize from '~icons/mdi/window-minimize'
     import IconWindowMaximize from '~icons/mdi/window-maximize'
     import IconWindowRestore from '~icons/mdi/window-restore'
+    import IconFolderMultiple from '~icons/mdi/folder-multiple'
     import IconClose from '~icons/mdi/close'
     import { onMount } from 'svelte';
     import { app, window } from '@neutralinojs/lib';
@@ -34,7 +35,10 @@
 </script>
 
 <div class="w-full flex flex-row justify-between items-center bg-surface-700" id="titleBar">
-    <h4 class="h4 ml-2">Scaffold</h4>
+    <div class="flex flex-row items-center ml-3">
+        <IconFolderMultiple />
+        <h4 class="h4 ml-2">Scaffold</h4>
+    </div>
     <div class="flex flex-row">
         <button class="btn btn-icon" on:click={ handleMinimize }><IconWindowMinimize /></button>
         { #if isMaximized} 

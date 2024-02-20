@@ -1,9 +1,11 @@
 <script lang="ts">
-    import Script from "$lib/components/Script.svelte";
-    import { PROJECT_TYPES } from "$lib/scaffolding/scaffold";
+    import BaseForm from "$lib/components/BaseForm.svelte";
+import Script from "$lib/components/Script.svelte";
+    import { PROJECT_TYPES, createConceptPropDirs, createEditorialDirs, createMotionDirs, createScriptDirs, createStoryDirs } from "$lib/scaffolding/scaffold";
 
-    const prevType = localStorage.getItem('scaffoldType')
-    let projectTypeSelection = prevType ? prevType : PROJECT_TYPES[0];
+    const prevTypeStorage = localStorage.getItem('scaffoldType')
+    const prevType = prevTypeStorage ? prevTypeStorage as unknown as typeof PROJECT_TYPES[number] : null
+    let projectTypeSelection: typeof PROJECT_TYPES[number] = prevType ? prevType : PROJECT_TYPES[0];
     const projectTypes = [...PROJECT_TYPES]
 
     const handleTypeSeletion = () => {
@@ -22,8 +24,21 @@
             </select>
         </label>
     </div>
+    
+    { #if projectTypeSelection === 'Concept-Props'}
+        <BaseForm scaffoldType={ projectTypeSelection } scaffoldHandler={createConceptPropDirs} />
+    { /if }
+    { #if projectTypeSelection === 'Editorial'}
+        <BaseForm scaffoldType={ projectTypeSelection } scaffoldHandler={createEditorialDirs} />
+    { /if }
+    { #if projectTypeSelection === 'Motion'}
+        <BaseForm scaffoldType={ projectTypeSelection } scaffoldHandler={createMotionDirs} />
+    { /if }
     { #if projectTypeSelection === 'Script'}
-        <Script />
+        <BaseForm scaffoldType={projectTypeSelection} scaffoldHandler={createScriptDirs} />
+    { /if }
+    { #if projectTypeSelection === 'Story'}
+        <BaseForm scaffoldType={ projectTypeSelection } scaffoldHandler={createStoryDirs} />
     { /if }
 
 </div>

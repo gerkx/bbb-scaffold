@@ -1,5 +1,6 @@
 import { filesystem } from '@neutralinojs/lib';
 
+
 export interface struct {
     [key: string]: struct |  null
 }

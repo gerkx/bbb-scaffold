@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Resource Hacker\ResourceHacker.exe" -open F:\Code\scaffold\scaffold-neutralino\dist\Scaffold\Scaffold.exe -save F:\Code\scaffold\scaffold-neutralino\dist\Scaffold.exe -action addskip -res F:\Code\scaffold\scaffold-neutralino\dist\Scaffold\favicon.ico -mask ICONGROUP,MAINICON,
